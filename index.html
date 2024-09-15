@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="DA-RAW, Domain adaptation, Adverse Weather">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DA-RAW: Domain Adaptive Object Detection for Real-World Adverse Weather Conditions</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon-16x16.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://msjeon.me">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <!-- <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">DA-RAW: Domain Adaptive Object Detection for Real-World Adverse Weather Conditions</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://msjeon.me">Minsik Jeon</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://junwon.me">Junwon Seo</a><sup>*</sup>,</span>
+            <span class="author-block">
+              Jihong Min<sup>2</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Agency for Defense Development,</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2309.08152"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2309.08152"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Explain Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=yUert9RGyMc"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Result Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=vsUSrFsbuu8"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Result Video</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="publication-video">
+        <iframe src="https://www.youtube.com/embed/yUert9RGyMc?rel=0&amp;showinfo=0"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <!-- <div class="concept has-text-centered">
+        <img src="./static/images/concept_fig.jpg"
+                  class="concept_fig"
+                  alt="Interpolate start reference image."
+                  width="70%"/>
+      </div> -->
+      <h2 class="subtitle has-text-centered">
+        <br>
+        <span class="dnerf">DA-RAW</span> is a robust method for object detection in adverse weather conditions.
+        <br>
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-shiba has-text-centered">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline width="90%">
+            <source src="./static/videos/bdd_rain_result.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-taodac_snow_result has-text-centered">
+          <video poster="" id="taodac_snow_result" autoplay controls muted loop playsinline width="90%">
+            <source src="./static/videos/taodac_snow_result.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-taodac_rain_result has-text-centered">
+          <video poster="" id="taodac_rain_result" autoplay controls muted loop playsinline width="90%">
+            <source src="./static/videos/taodac_rain_result.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Despite the success of deep learning-based object detection methods in recent years, 
+            it is still challenging to make the object detector reliable in adverse weather conditions 
+            such as rain and snow. For the robust performance of object detectors, 
+            unsupervised domain adaptation has been utilized to adapt the detection network trained on 
+            clear weather images to adverse weather images. 
+          </p>
+          <p>
+            While previous methods do not explicitly address weather corruption during adaptation, 
+            the domain gap between clear and adverse weather can be decomposed into two factors with distinct characteristics: 
+            a <strong>style gap</strong> and a <strong>weather gap</strong>. 
+          </p>
+          In this paper, we present an unsupervised domain adaptation framework for object detection 
+          that can more <strong>effectively adapt to real-world environments with adverse weather conditions
+          by addressing these two gaps separately</strong>.
+          Our method resolves the style gap by concentrating on stylerelated information of high-level features using an attention
+          module. Using self-supervised contrastive learning, our framework then reduces the weather gap and acquires instance
+          features that are robust to weather corruption. Extensive
+          experiments demonstrate that our method outperforms other
+          methods for object detection in adverse weather conditions.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/yUert9RGyMc?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+
+
+    
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        
+        <!-- Method Figure-->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <img src="./static/images/method_fig.png"
+                 class="method-image is-shadow"
+                 alt="Interpolate start reference image."/>
+          </div>
+        </div>
+        <!--/ Method Figure-->
+
+        <!-- Interpolating. -->
+        <div class="content has-text-justified">
+          <p>
+            ▲ We resolve the style and weather gaps separately to achieve optimal feature alignment. 
+            To bridge the style gap, our method aligns high-level style-related features using an attention module. 
+            Moreover, self-supervised contrastive learning is employed to resolve the weather gap.
+          </p>
+        </div>
+        <!-- <br/> -->
+        <!--/ Interpolating. -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+        <!-- Supplement video. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Result</h2>
+
+            <!-- Result Figure-->
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-full">
+                <img src="./static/images/Result_fig.png"
+                    class="method-image is-shadow"
+                    alt="Interpolate start reference image."/>
+              </div>
+            </div>
+            <!--/ Result Figure-->
+            
+            <!-- Result Figure-->
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-full">
+                <img src="./static/images/result_table.png"
+                    class="method-image"
+                    alt="Interpolate start reference image."/>
+              </div>
+            </div>
+            <!--/ Result Figure-->
+
+
+            <div class="content has-text-justified">
+              <p>
+                ▲ In both rainy and snowy conditions, our approach outperforms other methods when applied to real-world datasets. 
+                Existing UDA methods such as SADA and SWDA show a significant improvement in performance on synthetic datasets, 
+                but their performance on real-world datasets is only marginally improved or even decreases. This implies that existing methods
+                that globally align distributions are ineffective when adapting to real-world datasets with a large style gap and severe weather corruption.
+              </p>
+            </div>
+
+            <h2 class="title is-3">Additional Results</h2>
+            <div class="publication-video">
+              <iframe src="https://www.youtube.com/embed/vsUSrFsbuu8?rel=0&amp;showinfo=0"
+                      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        <!--/ Supplement video. -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{jeon2023raw,
+  author    = {Jeon, Minsik and Seo, Junwon and Min, Jihong},
+  title     = {DA-RAW: Domain Adaptive Object Detection for Real-World Adverse Weather Conditions},
+  journal   = {arXiv preprint arXiv:2309.08152},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website template was borrowd from <a href="https://nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
